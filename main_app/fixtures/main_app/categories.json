@@ -1,1 +1,50 @@
-[{"model": "main_app.categorymodel", "pk": 1, "fields": {"name": "Электроника", "description": "Широкий ассортимент электронных устройств и аксессуаров."}}, {"model": "main_app.categorymodel", "pk": 2, "fields": {"name": "Красота и здоровье", "description": "Косметика и товары для заботы о здоровье."}}, {"model": "main_app.categorymodel", "pk": 3, "fields": {"name": "Одежда", "description": "Мода для всех возрастов и стилей."}}, {"model": "main_app.categorymodel", "pk": 4, "fields": {"name": "Автомобили", "description": "Запчасти и аксессуары для автомобилей."}}, {"model": "main_app.categorymodel", "pk": 5, "fields": {"name": "Животные", "description": "Товары для ухода за домашними животными."}}, {"model": "main_app.categorymodel", "pk": 6, "fields": {"name": "Спорт и фитнес", "description": "Товары для активного образа жизни и тренировок."}}]
+[
+  {
+    "model": "main_app.categorymodel",
+    "pk": 1,
+    "fields": {
+      "name": "Электроника",
+      "description": "Широкий ассортимент электронных устройств и аксессуаров."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 2,
+    "fields": {
+      "name": "Красота и здоровье",
+      "description": "Косметика и товары для заботы о здоровье."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 3,
+    "fields": {
+      "name": "Одежда",
+      "description": "Мода для всех возрастов и стилей."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 4,
+    "fields": {
+      "name": "Автомобили",
+      "description": "Запчасти и аксессуары для автомобилей."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 5,
+    "fields": {
+      "name": "Животные",
+      "description": "Товары для ухода за домашними животными."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 6,
+    "fields": {
+      "name": "Спорт и фитнес",
+      "description": "Товары для активного образа жизни и тренировок."
+    }
+  }
+]

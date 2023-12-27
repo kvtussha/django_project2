@@ -1,1 +1,206 @@
-[{"model": "main_app.productmodel", "pk": 1, "fields": {"name": "Шотландский вислоухий котенок", "description": "Милый котенок с плюшевой шерстью и висячими ушками.", "image": "scottish_fold_kitten.jpg", "category": "Животные", "price_per_unit": 500, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 2, "fields": {"name": "Автомобиль Tesla Model S", "description": "Электрический автомобиль с высокой производительностью.", "image": "products/tesla_model_s.jpg", "category": "Автомобили", "price_per_unit": 80000, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 3, "fields": {"name": "Автомобиль BMW X5", "description": "Люксовый кроссовер с превосходной комбинацией стиля и мощности.", "image": "products/bmw_x5.jpg", "category": "Автомобили", "price_per_unit": 70000, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 4, "fields": {"name": "Автомобиль Ford Mustang", "description": "Иконичный мускул-кар с мощным двигателем и стильным дизайном.", "image": "products/ford_mustang.jpg", "category": "Автомобили", "price_per_unit": 60000, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 5, "fields": {"name": "Беговая дорожка NordicTrack", "description": "Профессиональная беговая дорожка для домашнего использования.", "image": "products/treadmill.jpg", "category": "Спорт и фитнес", "price_per_unit": 1200, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 6, "fields": {"name": "Велотренажер Peloton", "description": "Интерактивный велотренажер с онлайн тренировками.", "image": "products/peloton_bike.jpg", "category": "Спорт и фитнес", "price_per_unit": 2000, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 7, "fields": {"name": "Гантели с регулируемым весом", "description": "Компактные гантели с возможностью регулировки веса.", "image": "products/adjustable_dumbbells.jpg", "category": "Спорт и фитнес", "price_per_unit": 150, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 8, "fields": {"name": "Пудель-той", "description": "Маленький пудель с умными глазками и ласковым характером.", "image": "products/toy_poodle.jpg", "category": "Животные", "price_per_unit": 800, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 9, "fields": {"name": "Аквариумный гуппи", "description": "Яркая и красочная рыбка для аквариума.", "image": "products/guppy_fish.jpg", "category": "Животные", "price_per_unit": 10, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 10, "fields": {"name": "Набор для ухода за кожей Clinique", "description": "Эффективный набор для ухода за кожей, подходит для всех типов кожи.", "image": "products/clinique_skincare_set.jpg", "category": "Красота и здоровье", "price_per_unit": 80, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 11, "fields": {"name": "Парфюм Chanel №5", "description": "Изысканный аромат с нотами цветов и ванили.", "image": "products/chanel_no5_perfume.jpg", "category": "Красота и здоровье", "price_per_unit": 120, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.productmodel", "pk": 12, "fields": {"name": "Электрическая зубная щетка Oral-B", "description": "Инновационная зубная щетка для эффективной очистки зубов.", "image": "products/oral_b_toothbrush.jpg", "category": "Красота и здоровье", "price_per_unit": 40, "creation_date": "2023-12-19", "last_modified_date": "2023-12-19"}}, {"model": "main_app.categorymodel", "pk": 1, "fields": {"name": "Электроника", "description": "Широкий ассортимент электронных устройств и аксессуаров."}}, {"model": "main_app.categorymodel", "pk": 2, "fields": {"name": "Красота и здоровье", "description": "Косметика и товары для заботы о здоровье."}}, {"model": "main_app.categorymodel", "pk": 3, "fields": {"name": "Одежда", "description": "Мода для всех возрастов и стилей."}}, {"model": "main_app.categorymodel", "pk": 4, "fields": {"name": "Автомобили", "description": "Запчасти и аксессуары для автомобилей."}}, {"model": "main_app.categorymodel", "pk": 5, "fields": {"name": "Животные", "description": "Товары для ухода за домашними животными."}}, {"model": "main_app.categorymodel", "pk": 6, "fields": {"name": "Спорт и фитнес", "description": "Товары для активного образа жизни и тренировок."}}]
+[
+  {
+    "model": "main_app.productmodel",
+    "pk": 1,
+    "fields": {
+      "name": "Шотландский вислоухий котенок",
+      "description": "Милый котенок с плюшевой шерстью и висячими ушками.",
+      "image": "scottish_fold_kitten.jpg",
+      "category": "Животные",
+      "price_per_unit": 500,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 2,
+    "fields": {
+      "name": "Автомобиль Tesla Model S",
+      "description": "Электрический автомобиль с высокой производительностью.",
+      "image": "products/tesla_model_s.jpg",
+      "category": "Автомобили",
+      "price_per_unit": 80000,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 3,
+    "fields": {
+      "name": "Автомобиль BMW X5",
+      "description": "Люксовый кроссовер с превосходной комбинацией стиля и мощности.",
+      "image": "products/bmw_x5.jpg",
+      "category": "Автомобили",
+      "price_per_unit": 70000,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 4,
+    "fields": {
+      "name": "Автомобиль Ford Mustang",
+      "description": "Иконичный мускул-кар с мощным двигателем и стильным дизайном.",
+      "image": "products/ford_mustang.jpg",
+      "category": "Автомобили",
+      "price_per_unit": 60000,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 5,
+    "fields": {
+      "name": "Беговая дорожка NordicTrack",
+      "description": "Профессиональная беговая дорожка для домашнего использования.",
+      "image": "products/treadmill.jpg",
+      "category": "Спорт и фитнес",
+      "price_per_unit": 1200,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 6,
+    "fields": {
+      "name": "Велотренажер Peloton",
+      "description": "Интерактивный велотренажер с онлайн тренировками.",
+      "image": "products/peloton_bike.jpg",
+      "category": "Спорт и фитнес",
+      "price_per_unit": 2000,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 7,
+    "fields": {
+      "name": "Гантели с регулируемым весом",
+      "description": "Компактные гантели с возможностью регулировки веса.",
+      "image": "products/adjustable_dumbbells.jpg",
+      "category": "Спорт и фитнес",
+      "price_per_unit": 150,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 8,
+    "fields": {
+      "name": "Пудель-той",
+      "description": "Маленький пудель с умными глазками и ласковым характером.",
+      "image": "products/toy_poodle.jpg",
+      "category": "Животные",
+      "price_per_unit": 800,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 9,
+    "fields": {
+      "name": "Аквариумный гуппи",
+      "description": "Яркая и красочная рыбка для аквариума.",
+      "image": "products/guppy_fish.jpg",
+      "category": "Животные",
+      "price_per_unit": 10,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 10,
+    "fields": {
+      "name": "Набор для ухода за кожей Clinique",
+      "description": "Эффективный набор для ухода за кожей, подходит для всех типов кожи.",
+      "image": "products/clinique_skincare_set.jpg",
+      "category": "Красота и здоровье",
+      "price_per_unit": 80,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 11,
+    "fields": {
+      "name": "Парфюм Chanel №5",
+      "description": "Изысканный аромат с нотами цветов и ванили.",
+      "image": "products/chanel_no5_perfume.jpg",
+      "category": "Красота и здоровье",
+      "price_per_unit": 120,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.productmodel",
+    "pk": 12,
+    "fields": {
+      "name": "Электрическая зубная щетка Oral-B",
+      "description": "Инновационная зубная щетка для эффективной очистки зубов.",
+      "image": "products/oral_b_toothbrush.jpg",
+      "category": "Красота и здоровье",
+      "price_per_unit": 40,
+      "creation_date": "2023-12-19",
+      "last_modified_date": "2023-12-19"
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 1,
+    "fields": {
+      "name": "Электроника",
+      "description": "Широкий ассортимент электронных устройств и аксессуаров."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 2,
+    "fields": {
+      "name": "Красота и здоровье",
+      "description": "Косметика и товары для заботы о здоровье."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 3,
+    "fields": {
+      "name": "Одежда",
+      "description": "Мода для всех возрастов и стилей."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 4,
+    "fields": {
+      "name": "Автомобили",
+      "description": "Запчасти и аксессуары для автомобилей."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 5,
+    "fields": {
+      "name": "Животные",
+      "description": "Товары для ухода за домашними животными."
+    }
+  },
+  {
+    "model": "main_app.categorymodel",
+    "pk": 6,
+    "fields": {
+      "name": "Спорт и фитнес",
+      "description": "Товары для активного образа жизни и тренировок."
+    }
+  }
+]

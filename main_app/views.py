@@ -1,19 +1,11 @@
-import json
-import logging
-
 from django.shortcuts import render
+
+from main_app.models import ProductModel
 
 
 def home_page(request):
-    products_ = []
-    with open('main_app/fixtures/main_app/products.json', encoding='utf-8') as f:
-        products = json.load(f)
-    for product_item in products:
-        if len(products) < 12:
-            products.append(product_item["fields"])
-        else:
-            break
-    return render(request, 'main_app/home.html', {'products': products_})
+    products = ProductModel.objects.all()
+    return render(request, 'main_app/home.html', {'products': products})
 
 
 def contact_info(request):

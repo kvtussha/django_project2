@@ -1,7 +1,5 @@
 import json
-
 from django.core.management import BaseCommand
-
 from main_app.models import CategoryModel
 
 
@@ -15,8 +13,8 @@ class Command(BaseCommand):
             categories = json.load(f)
 
         for category_item in categories:
-            if len(categories_list):
-                categories_list.append(category_item["fields"])
+            categories_list.append(category_item["fields"])
+
         print(categories_list)
 
         for category_item in categories_list:
