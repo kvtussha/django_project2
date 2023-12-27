@@ -8,7 +8,7 @@ def home_page(request):
     return render(request, 'main_app/home.html', {'products': products})
 
 
-def contact_info(request):
+def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
