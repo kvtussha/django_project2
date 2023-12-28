@@ -1,4 +1,5 @@
 {% extends 'main_app/base.html' %}
+{% load mediapath_tag %}
 
 {% block content %}
 
@@ -14,10 +15,10 @@
                         <div class="card-body">
                             <h1 class="card-title pricing-card-title">$ {{ product.price_per_unit }}</h1>
                             <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                                <li><img src="/media/{{ product.image }}" style="width: 100%; height: 100%;" /></li>
+                                <li><img src="{% mediapath product.image %}" style="width: 100%; height: 100%";/></li>
                                 <li>{{ product.description|truncatechars:100 }}</li>
                                 <li><b>Категория: </b>{{product.category}}</li><br>
-                                <li><span>Дата создания карточки: {{ product.creation_date }}</span></li>
+                                <li><span>Дата создания карточки: {{product.creation_date}}</span></li>
                                 <li><span>Дата изменения карточки: {{ product.last_modified_date }}</span></li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
