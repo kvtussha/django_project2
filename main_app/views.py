@@ -14,3 +14,7 @@ def contact(request):
         email = request.POST.get('email')
         print(f'{name}: {email}')
     return render(request, 'main_app/contacts.html')
+
+
+def item(request):
+    return render(request, 'main_app/item.html')
