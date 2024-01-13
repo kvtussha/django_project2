@@ -5,5 +5,5 @@ from main_app.views import home_page, contacts, item
 urlpatterns = [
     path('', home_page),
     path('contacts/', contacts),
-    path('item/', item),
+    path('item/', item, name='item'),
 ]

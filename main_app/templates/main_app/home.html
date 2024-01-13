@@ -21,7 +21,10 @@
                                 <li><span>Дата создания карточки: {{product.creation_date}}</span></li>
                                 <li><span>Дата изменения карточки: {{ product.last_modified_date }}</span></li>
                             </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                            <form method="post" action="{% url product_url product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                            </form>
                         </div>
                     </div>
                 </div>
