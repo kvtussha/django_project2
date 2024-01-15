@@ -1,13 +1,14 @@
 {% extends 'main_app/base.html' %}
 
 {% block content %}
+
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-6">
             <img src="/path/to/product-image.jpg" alt="Product Image" class="img-fluid">
         </div>
         <div class="col-md-6">
-            <h2 class="display-4">Название товара</h2>
+            <h2 class="display-4">{{ item.name }}</h2>
             <p class="lead">Описание товара</p>
             <p class="lead">Цена: $19.99</p>
             <p class="lead">Категория: Автомобили</p>
@@ -16,4 +17,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
