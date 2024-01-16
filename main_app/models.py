@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class ProductModel(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='название')
     description = models.TextField(verbose_name='описание')
     image = models.ImageField(upload_to='products/', verbose_name='изображение', null=True, blank=True)
@@ -19,7 +19,7 @@ class ProductModel(models.Model):
         ordering = ('name', )
 
 
-class CategoryModel(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='название')
     description = models.TextField(verbose_name='описание')
 

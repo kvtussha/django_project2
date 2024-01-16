@@ -1,12 +1,12 @@
 import json
 from django.core.management import BaseCommand
-from main_app.models import CategoryModel
+from main_app.models import Category
 
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        CategoryModel.objects.all().delete()
+        Category.objects.all().delete()
 
         categories_list = []
         with open('main_app/fixtures/main_app/categories.json', encoding='utf-8') as f:
@@ -18,4 +18,4 @@ class Command(BaseCommand):
         print(categories_list)
 
         for category_item in categories_list:
-            CategoryModel.objects.create(**category_item)
+            Category.objects.create(**category_item)
