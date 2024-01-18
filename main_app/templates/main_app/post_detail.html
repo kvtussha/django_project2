@@ -1,0 +1,32 @@
+{% extends 'main_app/base.html' %}
+{% load mediapath_tag %}
+
+{% block content %}
+    
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <img src="{% mediapath post.image %}" class="img-fluid rounded-start" style="height: 300px;" alt="Post Image">
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3"> 
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2 class="card-title">{{ object.title }}</h2>
+                    <p class="card-text">{{ object.slug }}</p>
+                    <p class="card-text">{{ object.content }}</p>
+                    <p class="card-text"><small class="text-muted">{{ object.creation_date }}</small></p>
+                    <p class="card-text">Просмотры: {{ object.views_count }}</p>
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
+                    <a href="{% url 'main_app:post-delete' object.pk %}" class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
+                    <a href="{% url 'main_app:post-edit' object.pk %}" class="btn btn-lg btn-block btn-outline-warning">Изменить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

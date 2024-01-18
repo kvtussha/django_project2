@@ -14,7 +14,7 @@
             <p class="lead">Цена: ${{ product.price_per_unit }}</p>
             <p class="lead">Категория: {{ product.category }}</p>
             <p class="lead">Дата добавления: {{ product.creation_date }} </p>
-            <a href="{% url 'main_app:item' product.id %}" class="btn btn-lg btn-block btn-outline-primary">Добавить в корзину</a><br>
+            <a href="{% url 'main_app:product-detail' product.id %}" class="btn btn-lg btn-block btn-outline-primary">Добавить в корзину</a><br>
         </div>
     </div>
 </div>

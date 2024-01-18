@@ -5,7 +5,7 @@
     "fields": {
       "name": "Шотландский вислоухий котенок",
       "description": "Милый котенок с плюшевой шерстью и висячими ушками.",
-      "image": "scottish_fold_kitten.jpg",
+      "image": "scottish_fold_kitten.jpeg",
       "category": "Животные",
       "price_per_unit": 500,
       "creation_date": "2023-12-19",
@@ -153,54 +153,6 @@
       "price_per_unit": 40,
       "creation_date": "2023-12-19",
       "last_modified_date": "2023-12-19"
-    }
-  },
-  {
-    "model": "main_app.categorymodel",
-    "pk": 1,
-    "fields": {
-      "name": "Электроника",
-      "description": "Широкий ассортимент электронных устройств и аксессуаров."
-    }
-  },
-  {
-    "model": "main_app.categorymodel",
-    "pk": 2,
-    "fields": {
-      "name": "Красота и здоровье",
-      "description": "Косметика и товары для заботы о здоровье."
-    }
-  },
-  {
-    "model": "main_app.categorymodel",
-    "pk": 3,
-    "fields": {
-      "name": "Одежда",
-      "description": "Мода для всех возрастов и стилей."
-    }
-  },
-  {
-    "model": "main_app.categorymodel",
-    "pk": 4,
-    "fields": {
-      "name": "Автомобили",
-      "description": "Запчасти и аксессуары для автомобилей."
-    }
-  },
-  {
-    "model": "main_app.categorymodel",
-    "pk": 5,
-    "fields": {
-      "name": "Животные",
-      "description": "Товары для ухода за домашними животными."
-    }
-  },
-  {
-    "model": "main_app.categorymodel",
-    "pk": 6,
-    "fields": {
-      "name": "Спорт и фитнес",
-      "description": "Товары для активного образа жизни и тренировок."
     }
   }
 ]
