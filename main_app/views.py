@@ -4,12 +4,12 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from main_app.models import Product, Post
+from main_app.models import Product, Post, MailingMessage
 
 
 class ProductsListView(ListView):
     model = Product
-    template_name = 'main_app/product_list.html'
+    template_name = 'main_app/product/product_list.html'
     context_object_name = 'products'
 
 
@@ -23,7 +23,7 @@ def contacts(request):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'main_app/product_detail.html'
+    template_name = 'main_app/product/product_detail.html'
     context_object_name = 'product'
 
 
@@ -42,7 +42,7 @@ class PostCreateView(CreateView):
 
 class PostDetailView(DetailView):
     model = Post
-    template_name = 'main_app/post_detail.html'
+    template_name = 'main_app/post/post_detail.html'
     context_object_name = 'post'
 
     def get_object(self, queryset=None):
@@ -54,7 +54,7 @@ class PostDetailView(DetailView):
 
 class PostListView(ListView):
     model = Post
-    template_name = 'main_app/post_list.html'
+    template_name = 'main_app/post/post_list.html'
     context_object_name = 'posts'
 
     def get_queryset(self, *args, **kwargs):
@@ -71,10 +71,55 @@ class PostUpdateView(UpdateView):
 
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = 'main_app/post_confirm_delete.html'
+    template_name = 'main_app/post/post_confirm_delete.html'
     success_url = reverse_lazy('main_app:post-list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Удаление поста'
+        return context
+
+
+# -----------------------------------------------------------
+
+class MessageListView(ListView):
+    model = MailingMessage
+    template_name = 'main_app/message/message_list.html'
+    context_object_name = 'messages'
+
+
+class MessageDetailView(DetailView):
+    model = MailingMessage
+    template_name = 'main_app/message/message_detail.html'
+    context_object_name = 'message'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        self.object.creation_date = timezone.now()
+        self.object.save()
+        return self.object
+
+
+class MessageCreateView(CreateView):
+    model = MailingMessage
+    fields = ('subject', 'body', )
+    context_object_name = 'message'
+    template_name = 'main_app/message/message_form.html'
+    success_url = reverse_lazy('main_app:message-list')
+
+
+class MessageUpdateView(UpdateView):
+    model = MailingMessage
+    fields = ('subject', 'body',)
+    success_url = reverse_lazy('main_app:message-detail')
+
+
+class MessageDeleteView(DeleteView):
+    model = MailingMessage
+    template_name = 'main_app/message/message_confirm_delete.html'
+    success_url = reverse_lazy('main_app:message-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Удаление уведомления'
         return context

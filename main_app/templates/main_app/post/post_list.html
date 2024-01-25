@@ -5,7 +5,7 @@
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
-                <a href="{% url 'main_app:post-form' %}" class="btn btn-lg btn-block btn-outline-primary">Опубликовать
+                <a href="{% url 'main_app:post-form' %}" class="btn btn-primary btn-lg btn-block">Опубликовать
                     новый отзыв</a>
             </div>
             {% for post in posts %}
@@ -22,7 +22,7 @@
                                 <p class="card-text">{{ post.content }}</p>
                                 <p class="card-text">{{ post.creation_date }}</p>
                                 <a href="{% url 'main_app:post-detail' post.id %}"
-                                   class="btn btn-lg btn-block btn-outline-primary">Прочитать полностью</a><br>
+                                   class="btn btn-primary btn-lg btn-block">Прочитать полностью</a><br>
                             </div>
                         </div>
                     </div>
