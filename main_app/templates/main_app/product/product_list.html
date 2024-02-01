@@ -4,6 +4,12 @@
 {% block content %}
 
 <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
+            <a href="{% url 'main_app:product-form' %}" class="btn btn-primary btn-lg btn-block">Загрузить
+                новый продукт</a>
+        </div>
+    </div>
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for product in products %}
@@ -20,7 +26,8 @@
                                 <li><b>Категория: </b>{{product.category}}</li><br>
                                 <li><span>Дата создания карточки: {{product.creation_date}}</span></li>
                             </ul>
-                            <a href="{% url 'main_app:product-detail' product.id %}" class="btn btn-primary btn-lg btn-block">Купить</a><br>
+                            <a href="{% url 'main_app:product-detail' product.id %}" 
+                               class="btn btn-primary btn-lg btn-block">Купить</a><br>
                         </div>
                     </div>
                 </div>

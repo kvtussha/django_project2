@@ -10,7 +10,9 @@
                 {% csrf_token %}
                 <input type="submit" class="btn btn-danger" value="Удалить">
             </form>
-            <a href="{% url 'main_app:post-list' %}" class="btn btn-secondary">Отмена</a>
+            <div class="mt-2">
+                <a href="{% url 'main_app:post-list' %}" class="btn btn-secondary">Отмена</a>
+            </div>
         </div>
     </div>
 </div>

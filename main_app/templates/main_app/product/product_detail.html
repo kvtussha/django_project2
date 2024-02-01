@@ -14,7 +14,22 @@
             <p class="lead">Цена: ${{ product.price_per_unit }}</p>
             <p class="lead">Категория: {{ product.category }}</p>
             <p class="lead">Дата добавления: {{ product.creation_date }} </p>
-            <a href="{% url 'main_app:product-detail' product.id %}" class="btn btn-primary btn-lg btn-block">Добавить в корзину</a><br>
+            
+            {% if version_id %}
+                <a href="{% url 'main_app:version-detail' version_id %}" style="color: #007bff; text-decoration: none; 
+                transition: color 0.3s ease;">Посмотреть версию продукта</a>
+            {% else %}
+                <a href="{% url 'main_app:version-form' %}" style="color: #007bff; text-decoration: none; 
+                transition: color 0.3s ease;">Добавить версию продукта</a>
+            {% endif %}
+        
+            <div class="mt-4">
+                <a href="{% url 'main_app:product-detail' product.id %}" class="btn btn-primary btn-lg btn-block">Добавить в корзину</a><br>
+            </div>
+            <div class="mt-2">
+                <a href="{% url 'main_app:product-delete' object.pk %}" class="btn btn-danger btn-lg btn-block">Удалить</a>
+                <a href="{% url 'main_app:product-edit' object.pk %}" class="btn btn-warning btn-lg btn-block">Изменить</a>
+            </div>
         </div>
     </div>
 </div>

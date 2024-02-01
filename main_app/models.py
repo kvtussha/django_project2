@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import ForeignKey
 
 
 class Product(models.Model):
@@ -50,7 +51,7 @@ class Post(models.Model):
         ordering = ('title', )
 
 
-class MailingMessage(models.Model):
+class Message(models.Model):
     subject = models.CharField(max_length=255, verbose_name='Letter subject')
     body = models.TextField(verbose_name='Body of the letter')
     sent = models.BooleanField(verbose_name='Отправка', default=False)
@@ -76,7 +77,7 @@ class Mailing(models.Model):
         ('started', 'Started'),
     ]
 
-    mailing = models.ForeignKey(MailingMessage, on_delete=models.CASCADE, related_name='messages',
+    mailing = models.ForeignKey(Message, on_delete=models.CASCADE, related_name='messages',
                                 verbose_name='Mailing message')
     mailing_time = models.TimeField(verbose_name='Mailing time')
     frequency = models.CharField(max_length=7, choices=FREQUENCY_CHOICES, verbose_name='Frequency')
@@ -91,7 +92,7 @@ class Mailing(models.Model):
 
 
 class MailingLog(models.Model):
-    mailing = models.ForeignKey(MailingMessage, on_delete=models.CASCADE, related_name='logs', verbose_name='Mailing time')
+    mailing = models.ForeignKey(Message, on_delete=models.CASCADE, related_name='logs', verbose_name='Mailing time')
     attempt_datetime = models.DateTimeField(auto_now_add=True, verbose_name='Date and time of last attempt')
     attempt_status = models.CharField(max_length=15, verbose_name='Attempt status')
     server_response = models.TextField(blank=True, null=True, verbose_name='Mail server response, if any')
@@ -110,7 +111,7 @@ class Client(models.Model):
     comment = models.TextField(verbose_name='comment', null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True, verbose_name='product id')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True, verbose_name='post id')
-    mailing = models.ForeignKey(MailingMessage, on_delete=models.CASCADE, null=True, blank=True, related_name='mailings',
+    mailing = models.ForeignKey(Message, on_delete=models.CASCADE, null=True, blank=True, related_name='mailings',
                                 verbose_name='Mailing time')
 
     def __str__(self):
@@ -120,3 +121,15 @@ class Client(models.Model):
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
         ordering = ('name', )
+
+
+class ProductVersion(models.Model):
+    version_name = models.CharField(max_length=200, verbose_name='version name')
+    version_number = models.CharField(max_length=100, verbose_name='version number', default='1.0.0')
+    current_version = models.CharField(max_length=100, verbose_name='version number', default='1.0.0')
+    product = ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True, verbose_name='product')
+
+    class Meta:
+        verbose_name = 'Версия продукта'
+        verbose_name_plural = 'Версии продукта'
+        ordering = ('version_number', )
