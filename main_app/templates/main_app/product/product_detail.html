@@ -14,15 +14,15 @@
             <p class="lead">Цена: ${{ product.price_per_unit }}</p>
             <p class="lead">Категория: {{ product.category }}</p>
             <p class="lead">Дата добавления: {{ product.creation_date }} </p>
-            
+
             {% if version_id %}
-                <a href="{% url 'main_app:version-detail' version_id %}" style="color: #007bff; text-decoration: none; 
+                <a href="{% url 'main_app:version-detail' version_id %}" style="color: #007bff; text-decoration: none;
                 transition: color 0.3s ease;">Посмотреть версию продукта</a>
             {% else %}
-                <a href="{% url 'main_app:version-form' %}" style="color: #007bff; text-decoration: none; 
+                <a href="{% url 'main_app:version-form' %}" style="color: #007bff; text-decoration: none;
                 transition: color 0.3s ease;">Добавить версию продукта</a>
             {% endif %}
-        
+
             <div class="mt-4">
                 <a href="{% url 'main_app:product-detail' product.id %}" class="btn btn-primary btn-lg btn-block">Добавить в корзину</a><br>
             </div>

@@ -188,7 +188,9 @@ class VersionCreateView(CreateView):
     model = ProductVersion
     form_class = VersionCreateForm
     template_name = 'main_app/version/version_form.html'
-    success_url = reverse_lazy('main_app:product-detail')
+
+    def get_success_url(self):
+        return reverse('main_app:product-detail', kwargs={'version_id': self.object.pk})
 
 
 class VersionUpdateView(UpdateView):
