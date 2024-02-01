@@ -23,8 +23,13 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = self.get_object()
-        version = get_object_or_404(ProductVersion, product=product)
-        context['version_id'] = version.id
+
+        try:
+            version = ProductVersion.objects.get(product=product)
+        except ProductVersion.DoesNotExist:
+            version = None
+
+        context['version'] = version
         return context
 
 
@@ -35,8 +40,6 @@ class ProductCreateView(CreateView):
     template_name = 'main_app/product/product_form.html'
 
     def form_valid(self, form):
-        form.instance.creation_date = timezone.now()
-        form.instance.last_modified_date = timezone.now()
         form.instance.views_count = 0
         return super().form_valid(form)
 
@@ -189,8 +192,13 @@ class VersionCreateView(CreateView):
     form_class = VersionCreateForm
     template_name = 'main_app/version/version_form.html'
 
+    def form_valid(self, form):
+        product = get_object_or_404(Product, id=self.kwargs.get('pk'))
+        form.instance.product = product
+        return super().form_valid(form)
+
     def get_success_url(self):
-        return reverse('main_app:product-detail', kwargs={'version_id': self.object.pk})
+        return reverse_lazy('main_app:product-detail', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class VersionUpdateView(UpdateView):
