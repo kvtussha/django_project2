@@ -15,8 +15,8 @@
             <p class="lead">Категория: {{ product.category }}</p>
             <p class="lead">Дата добавления: {{ product.creation_date }} </p>
 
-            {% if version_id %}
-                <a href="{% url 'main_app:version-detail' version_id %}" style="color: #007bff; text-decoration: none;
+            {% if version.id %}
+                <a href="{% url 'main_app:version-detail' version.id %}" style="color: #007bff; text-decoration: none;
                 transition: color 0.3s ease;">Посмотреть версию продукта</a>
             {% else %}
                 <a href="{% url 'main_app:version-form' %}" style="color: #007bff; text-decoration: none;
