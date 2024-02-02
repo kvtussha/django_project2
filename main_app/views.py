@@ -4,9 +4,8 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from main_app.forms import ProductCreateForm, ProductUpdateForm, PostCreateForm, PostUpdateForm, MessageUpdateForm, \
-    MessageCreateForm, VersionCreateForm, VersionUpdateForm
-from main_app.models import Product, Post, Message, ProductVersion
+from main_app.forms import ProductCreateForm, ProductUpdateForm, PostCreateForm, PostUpdateForm, VersionCreateForm, VersionUpdateForm
+from main_app.models import Product, Post, ProductVersion
 
 
 class ProductsListView(ListView):
@@ -129,51 +128,6 @@ class PostDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Удаление поста'
-        return context
-
-
-class MessageListView(ListView):
-    model = Message
-    template_name = 'main_app/message/message_list.html'
-    context_object_name = 'messages'
-
-
-class MessageDetailView(DetailView):
-    model = Message
-    template_name = 'main_app/message/message_detail.html'
-    context_object_name = 'message'
-
-    def get_object(self, queryset=None):
-        self.object = super().get_object(queryset)
-        self.object.creation_date = timezone.now()
-        self.object.save()
-        return self.object
-
-
-class MessageCreateView(CreateView):
-    model = Message
-    form_class = MessageCreateForm
-    template_name = 'main_app/message/message_form.html'
-    success_url = reverse_lazy('main_app:message-list')
-
-
-class MessageUpdateView(UpdateView):
-    model = Message
-    form_class = MessageUpdateForm
-    template_name = 'main_app/message/message_form.html'
-
-    def get_success_url(self):
-        return reverse('main_app:message-detail', kwargs={'pk': self.object.pk})
-
-
-class MessageDeleteView(DeleteView):
-    model = Message
-    template_name = 'main_app/message/message_confirm_delete.html'
-    success_url = reverse_lazy('main_app:message-list')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Удаление уведомления'
         return context
 
 

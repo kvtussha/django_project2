@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from django import forms
 
-from main_app.models import Product, Category, Post, Message, ProductVersion
+from main_app.models import Product, Category, Post, ProductVersion
 
 
 class ProductCreateForm(ModelForm):
@@ -55,24 +55,6 @@ class PostUpdateForm(ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'content', 'image')
-
-
-class MessageCreateForm(ModelForm):
-    sent = forms.BooleanField(initial=False, required=False,
-                              widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-
-    class Meta:
-        model = Message
-        fields = ('subject', 'body', 'sent')
-
-
-class MessageUpdateForm(ModelForm):
-    sent = forms.BooleanField(initial=False, required=False,
-                              widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
-
-    class Meta:
-        model = Message
-        fields = ('subject', 'body', 'sent')
 
 
 class VersionCreateForm(ModelForm):

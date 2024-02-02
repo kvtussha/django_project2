@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main_app.models import Product, Category, Post, MailingLog, Message, Mailing, Client, ProductVersion
+from main_app.models import Product, Category, Post, Client, ProductVersion
 
 
 @admin.register(Category)
@@ -22,21 +22,6 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('name', 'contact_email', 'comment', )
-
-
-@admin.register(Mailing)
-class MessageAdmin(admin.ModelAdmin):
-    list_display = ('mailing_time', 'frequency', 'status', )
-
-
-@admin.register(Message)
-class MessageAdmin(admin.ModelAdmin):
-    list_display = ('subject', 'body', )
-
-
-@admin.register(MailingLog)
-class MailingLogAdmin(admin.ModelAdmin):
-    list_display = ('attempt_datetime', 'attempt_status', 'server_response')
 
 
 @admin.register(ProductVersion)

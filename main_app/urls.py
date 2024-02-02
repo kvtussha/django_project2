@@ -1,8 +1,7 @@
 from django.urls import path
 
 from main_app.views import (contacts, ProductDetailView, ProductsListView, PostListView,
-                            PostDetailView, PostCreateView, PostDeleteView, PostUpdateView, MessageListView,
-                            MessageCreateView, MessageDetailView, MessageDeleteView, MessageUpdateView,
+                            PostDetailView, PostCreateView, PostDeleteView, PostUpdateView,
                             ProductCreateView, ProductDeleteView, ProductUpdateView, VersionDetailView,
                             VersionCreateView, VersionUpdateView)
 
@@ -21,12 +20,6 @@ urlpatterns = [
     path('post/form/', PostCreateView.as_view(), name='post-form'),
     path('post/delete/<int:pk>/', PostDeleteView.as_view(), name='post-delete'),
     path('post/edit/<int:pk>/', PostUpdateView.as_view(), name='post-edit'),
-
-    path('messages/', MessageListView.as_view(), name='message-list'),
-    path('message/form/', MessageCreateView.as_view(), name='message-form'),
-    path('message/<int:pk>/', MessageDetailView.as_view(), name='message-detail'),
-    path('message/delete/<int:pk>/', MessageDeleteView.as_view(), name='message-delete'),
-    path('message/edit/<int:pk>/', MessageUpdateView.as_view(), name='message-edit'),
 
     path('version/<int:version_id>/', VersionDetailView.as_view(), name='version-detail'),
     path('version/form/', VersionCreateView.as_view(), name='version-form'),
