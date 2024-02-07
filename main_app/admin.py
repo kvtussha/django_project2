@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main_app.models import Product, Category, Post, Client, ProductVersion
+from main_app.models import Product, Category, Post, ProductVersion
 
 
 @admin.register(Category)
@@ -19,11 +19,6 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'content', )
 
 
-@admin.register(Client)
-class ClientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'contact_email', 'comment', )
-
-
 @admin.register(ProductVersion)
 class ProductVersionAdmin(admin.ModelAdmin):
-    list_display = ('version_name', 'version_number', 'current_version')
+    list_display = ('version_name', 'version_number',)

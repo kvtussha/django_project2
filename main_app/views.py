@@ -4,7 +4,8 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from main_app.forms import ProductCreateForm, ProductUpdateForm, PostCreateForm, PostUpdateForm, VersionCreateForm, VersionUpdateForm
+from main_app.forms import (ProductCreateForm, ProductUpdateForm, PostCreateForm, PostUpdateForm, VersionCreateForm,
+                            VersionUpdateForm)
 from main_app.models import Product, Post, ProductVersion
 
 
@@ -40,6 +41,7 @@ class ProductCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.views_count = 0
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 

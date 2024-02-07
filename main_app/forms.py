@@ -60,11 +60,11 @@ class PostUpdateForm(ModelForm):
 class VersionCreateForm(ModelForm):
     class Meta:
         model = ProductVersion
-        fields = ('version_name', 'version_number', 'current_version')
+        fields = ('version_name', 'version_number', )
 
 
 class VersionUpdateForm(ModelForm):
     class Meta:
         model = ProductVersion
-        fields = ('version_name', 'version_number', 'current_version')
+        fields = ('version_name', 'version_number', )
 

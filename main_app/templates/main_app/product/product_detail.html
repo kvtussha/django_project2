@@ -18,9 +18,6 @@
             {% if version.id %}
                 <a href="{% url 'main_app:version-detail' version.id %}" style="color: #007bff; text-decoration: none;
                 transition: color 0.3s ease;">Посмотреть версию продукта</a>
-            {% else %}
-                <a href="{% url 'main_app:version-form' %}" style="color: #007bff; text-decoration: none;
-                transition: color 0.3s ease;">Добавить версию продукта</a>
             {% endif %}
 
             <div class="mt-4">
