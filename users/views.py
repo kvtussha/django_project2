@@ -1,6 +1,6 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth import login, get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
@@ -30,7 +30,7 @@ class RegisterView(CreateView):
         return response
 
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
@@ -39,8 +39,7 @@ class ProfileView(UpdateView):
         return self.request.user
 
 
-@login_required
-class PasswordResetView(View):
+class PasswordResetView(LoginRequiredMixin, View):
     template_name = 'registration/password_reset_form.html'
 
     def post(self, request, *args, **kwargs):
@@ -64,24 +63,21 @@ class PasswordResetView(View):
         return render(request, self.template_name, {'form': form})
 
 
-@login_required
-class UserPasswordResetDoneView(PasswordResetDoneView):
+class UserPasswordResetDoneView(LoginRequiredMixin, PasswordResetDoneView):
     model = User
     form_class = UserRegisterForm
     template_name = 'users/password_reset_done.html'
     success_url = reverse_lazy('users:password_reset_done')
 
 
-@login_required
-class UserPasswordResetConfirmView(PasswordResetConfirmView):
+class UserPasswordResetConfirmView(LoginRequiredMixin, PasswordResetConfirmView):
     model = User
     form_class = UserRegisterForm
     template_name = 'users/password_reset_confirm.html'
     success_url = reverse_lazy('users:password_reset_confirm')
 
 
-@login_required
-class UserPasswordResetCompleteView(PasswordResetCompleteView):
+class UserPasswordResetCompleteView(LoginRequiredMixin, PasswordResetCompleteView):
     model = User
     form_class = UserRegisterForm
     template_name = 'users/password_reset_done.html'
