@@ -5,12 +5,14 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView, \
     PasswordResetView, LogoutView
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
+from django.utils.crypto import get_random_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.views.generic import CreateView, UpdateView
 
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 
 
@@ -18,11 +20,21 @@ class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('user:login')
+    success_url = reverse_lazy('main_app:product-list')
 
     def form_valid(self, form):
         response = super().form_valid(form)
         user = form.save(commit=True)
+
+        current_site = self.request.get_host()
+        subject = 'Подтверждение регистрации'
+        message = render_to_string('registration/activation_email.html', {
+            'user': user,
+            'domain': current_site,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': default_token_generator.make_token(user),
+        })
+        user.email_user(subject, message)
 
         login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
 
@@ -76,19 +88,25 @@ class UserPasswordResetView(PasswordResetView):
 class UserPasswordResetDoneView(LoginRequiredMixin, PasswordResetDoneView):
     model = User
     form_class = UserRegisterForm
-    template_name = 'users/password_reset_done.html'
+    template_name = 'registration/password_reset_done.html'
     success_url = reverse_lazy('users:password_reset_done')
 
 
 class UserPasswordResetConfirmView(LoginRequiredMixin, PasswordResetConfirmView):
     model = User
     form_class = UserRegisterForm
-    template_name = 'users/password_reset_confirm.html'
+    template_name = 'registration/password_reset_confirm.html'
     success_url = reverse_lazy('users:password_reset_confirm')
+
+    @staticmethod
+    def set_password(user):
+        new_password = get_random_string(length=12)
+        user.set_password(new_password)
+        user.save()
 
 
 class UserPasswordResetCompleteView(LoginRequiredMixin, PasswordResetCompleteView):
     model = User
     form_class = UserRegisterForm
-    template_name = 'users/password_reset_done.html'
+    template_name = 'registration/password_reset_done.html'
     success_url = reverse_lazy('users:password_reset_done')
