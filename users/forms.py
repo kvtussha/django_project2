@@ -4,26 +4,18 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from users.models import User
 
 
-class UserRegistrationForm(UserCreationForm):
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput)
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField(required=True, help_text='Введите действующий email адрес.')
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'password2')
+        fields = ('email', 'phone', 'image', 'country', 'password1', )
 
-    def clean_password2(self):
-        cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
-            raise forms.ValidationError('Passwords don\'t match.')
-        return cd['password2']
 
-    def save(self, commit=True):
-        user = super(UserRegistrationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
-        if commit:
-            user.save()
-        return user
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = ['email', 'image', 'country']
 
 
 class UserProfileForm(UserChangeForm):
