@@ -10,5 +10,8 @@ class User(AbstractUser):
     country = models.CharField(max_length=100, verbose_name='country', null=True, blank=True)
     is_password_reset = models.BooleanField(default=False)
 
+    verification_code = models.CharField(max_length=8)
+    is_active = models.BooleanField(default=False)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

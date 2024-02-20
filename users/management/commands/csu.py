@@ -15,4 +15,5 @@ class Command(BaseCommand):
             is_superuser=True,
         )
         user.set_password(os.getenv("POSTGRES_PASSWORD"))
+        user.is_active = True
         user.save()
