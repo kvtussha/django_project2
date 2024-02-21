@@ -6,9 +6,9 @@
     <title>Подтверждение регистрации</title>
 </head>
 <body>
-    <p>Здравствуйте, {{ user.username }}!</p>[
-    <p>Для подтверждения вашей регистрации, пожалуйста, перейдите по следующей ссылке и введите код {{ verification_code }}:</p>
-    <p><a href="{{ domain }}{% url 'users:confirm_register' uid=uid token=token %}">Подтвердить регистрацию</a></p>
+    <p>Здравствуйте, {{user.username}}!</p>[
+    <p>Для подтверждения вашей регистрации, пожалуйста, перейдите по следующей ссылке и введите код {{verification_code}}:</p>
+    <p><a href="{{ domain }}{% url 'users:confirm_register' %}">Подтвердить регистрацию</a></p>
     <p>Спасибо за регистрацию!</p>
 </body>
 </html>
