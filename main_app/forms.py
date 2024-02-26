@@ -67,4 +67,3 @@ class VersionUpdateForm(ModelForm):
     class Meta:
         model = ProductVersion
         fields = ('version_name', 'version_number', )
-
