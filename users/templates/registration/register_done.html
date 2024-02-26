@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Регистрация завершена</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-group {
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #5bc0de;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="form-group">
         <form method="POST" action="{% url 'users:confirm_register' %}">
+            {% csrf_token %}
             <label for="verification_code">Для завершения регистрации введите код из письма:</label>
             <input type="text" class="form-control" id="verification_code">
             <button type="submit" class="btn btn-info mt-3">Отправить</button>

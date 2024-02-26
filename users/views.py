@@ -7,7 +7,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView, \
     PasswordResetView, LogoutView
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
@@ -33,24 +33,18 @@ class RegisterView(CreateView):
         current_site = self.request.get_host()
         subject = 'Подтверждение регистрации'
 
-        # user.email_user(subject, message)
-
-        # user.save()
-
         verification_code = ''.join([str(random.randint(0, 9)) for _ in range(8)])
         user.verification_code = verification_code
+
+        user.save()
 
         message = render_to_string('registration/activation_email.html', {
             'user': user,
             'domain': current_site,
             'verification_code': verification_code
-            # 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            # 'token': default_token_generator.make_token(user),
         })
 
         send_mail(subject, message, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email])
-
-        # login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
 
         return super().form_valid(form)
 
@@ -64,11 +58,12 @@ class CustomLogoutView(LogoutView):
 
 class ConfirmRegister(TemplateView):
     def get(self, request, *args, **kwargs):
-        return render('registration/register_done.html')
+        return render(request, 'registration/register_done.html')
 
-    def post(self, request, *args, **kwargs):
-        token = request.POST.get('verification_code')
-        user = User.objects.get_object_or_404(verification_code=token)
+    @staticmethod
+    def post(request, *args, **kwargs):
+        token = int(request.POST.get('verification_code'))
+        user = get_object_or_404(User, verification_code=token)
 
         if not user.is_active:
             user.is_active = True
