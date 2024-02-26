@@ -134,3 +134,4 @@ class UserPasswordResetCompleteView(LoginRequiredMixin, PasswordResetCompleteVie
     form_class = UserRegisterForm
     template_name = 'registration/password_reset_done.html'
     success_url = reverse_lazy('users:password_reset_done')
+
