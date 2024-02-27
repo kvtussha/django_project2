@@ -1,15 +1,15 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.urls import path, include
 
 from users.views import (RegisterView, ProfileView, PasswordResetView, PasswordResetDoneView,
-                         PasswordResetConfirmView, PasswordResetCompleteView, ConfirmRegister)
+                         PasswordResetConfirmView, PasswordResetCompleteView, ConfirmRegister, CustomLogoutView)
 
 
 app_name = 'users'
 
 urlpatterns = [
     path('', LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('register/', RegisterView.as_view(), name='register'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('accounts/', include('django.contrib.auth.urls')),

@@ -60,8 +60,7 @@ class ConfirmRegister(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, 'registration/register_done.html')
 
-    @staticmethod
-    def post(request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         token = int(request.POST.get('verification_code'))
         user = get_object_or_404(User, verification_code=token)
 
