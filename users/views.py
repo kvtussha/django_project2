@@ -11,8 +11,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
 from django.views.generic import CreateView, UpdateView, TemplateView
 
 from config import settings
@@ -45,6 +43,9 @@ class RegisterView(CreateView):
         })
 
         send_mail(subject, message, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email])
+
+        user.is_active = True
+        user.save()
 
         return super().form_valid(form)
 
