@@ -15,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User
-        fields = ['email', 'image', 'country']
+        fields = ['email', ]
 
 
 class UserProfileForm(UserChangeForm):
