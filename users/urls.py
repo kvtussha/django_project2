@@ -4,10 +4,7 @@ from django.urls import path, include
 from users.views import (RegisterView, ProfileView, PasswordResetView, PasswordResetDoneView,
                          PasswordResetConfirmView, PasswordResetCompleteView, ConfirmRegister, CustomLogoutView,
                          )
-
-
 app_name = 'users'
-
 urlpatterns = [
     path('', LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
