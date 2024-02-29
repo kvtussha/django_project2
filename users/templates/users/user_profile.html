@@ -5,9 +5,11 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
-            <img src="{% mediapath user.image %}" class="img-fluid rounded-start" style="height: 300px;" alt="User Image">
-        </div>
+        {% if user.image %}
+            <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
+                <img src="{% mediapath user.image %}" class="img-fluid rounded-start" style="height: 300px;" alt="User Image">
+            </div>
+        {% endif %}
     </div>
     <div class="container">
     <div class="row justify-content-center">

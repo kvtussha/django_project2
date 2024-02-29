@@ -46,12 +46,14 @@ class RegisterView(CreateView):
         })
 
         send_mail(subject, message, from_email=settings.EMAIL_HOST_USER, recipient_list=[user.email])
+        user.is_active = True
+        user.save()
 
         return super().form_valid(form)
 
 
 class CustomLogoutView(LogoutView):
-    next_page = reverse_lazy('main:product-list')
+    next_page = reverse_lazy('main_app:product-list')
 
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
