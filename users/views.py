@@ -14,6 +14,7 @@ from django.utils.crypto import get_random_string
 from django.views.generic import CreateView, UpdateView, TemplateView
 
 from config import settings
+from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 
@@ -105,8 +106,33 @@ class UserPasswordResetView(PasswordResetView):
 
         return super().form_valid(form)
 
+    class UserPasswordResetView(PasswordResetView):
+        template_name = 'registration/password_reset_form.html'
+        success_url = reverse_lazy('users:password_reset_done')
+        form_class = PasswordResetForm
+
+        def form_valid(self, form):
+            email = form.cleaned_data['email']
+            user = get_user_model().objects.get(email=email)
+            uid = str(user.pk)
+            token = user.verification_code
+
+            subject = 'Сброс пароля'
+            message = 'Чтобы завершить сброс пароля, перейдите по ссылке: {url}'.format(
+                url=self.request.build_absolute_uri(
+                    reverse('users:password_reset_confirm', kwargs={'uidb64': uid, 'token': token})
+                )
+            )
+            from_email = EMAIL_HOST_USER
+            send_mail(subject, message, from_email, [user.email])
+
+            return super().form_valid(form)
+
+        def get_success_url(self):
+            return reverse('users:password-reset')
+
     def get_success_url(self):
-        return reverse('users:password-reset')
+        return reverse('users:password_reset')
 
 
 class UserPasswordResetDoneView(LoginRequiredMixin, PasswordResetDoneView):
