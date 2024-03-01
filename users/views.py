@@ -123,7 +123,7 @@ class UserPasswordResetView(PasswordResetView):
                 )
             )
             from_email = EMAIL_HOST_USER
-            send_mail(subject, message, from_email, [user.email])
+            send_mail(subject, message, from_email, [email])
 
             return super().form_valid(form)
 
