@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import ForeignKey
 
@@ -10,6 +11,7 @@ class Product(models.Model):
     price_per_unit = models.IntegerField(verbose_name='цена за единицу')
     creation_date = models.DateField(auto_now_add=True, verbose_name='дата создания')
     last_modified_date = models.DateField(auto_now=True, verbose_name='дата последнего изменения')
+    user_email = models.EmailField()
 
     def __str__(self):
         return f'{self.name} {self.category} {self.price_per_unit}'

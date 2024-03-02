@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
@@ -15,7 +16,7 @@ class ProductsListView(ListView):
     context_object_name = 'products'
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'main_app/product/product_detail.html'
     context_object_name = 'product'
@@ -33,7 +34,7 @@ class ProductDetailView(DetailView):
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductCreateForm
     success_url = reverse_lazy('main_app:product-list')
@@ -41,11 +42,11 @@ class ProductCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.views_count = 0
-        form.instance.user = self.request.user
+        form.instance.user_email = self.request.user.email
         return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductUpdateForm
     template_name = 'main_app/product/product_form.html'
@@ -58,7 +59,7 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'main_app/product/product_confirm_delete.html'
     success_url = reverse_lazy('main_app:product-list')
