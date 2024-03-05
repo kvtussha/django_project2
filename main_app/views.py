@@ -165,3 +165,4 @@ class VersionUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('main_app:version-detail', kwargs={'version_id': self.object.pk})
+
