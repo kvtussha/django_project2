@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import ForeignKey
 
+from users.models import User
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='название')
@@ -12,6 +14,7 @@ class Product(models.Model):
     creation_date = models.DateField(auto_now_add=True, verbose_name='дата создания')
     last_modified_date = models.DateField(auto_now=True, verbose_name='дата последнего изменения')
     user_email = models.EmailField()
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name} {self.category} {self.price_per_unit}'
@@ -20,6 +23,12 @@ class Product(models.Model):
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
         ordering = ('name', )
+
+        permissions = [
+            ("cancel_product_publication", "Отмена публикации продукта"),
+            ("change_product_description", "Изменение описания продукта"),
+            ("change_product_category", "Изменение категории продукта"),
+        ]
 
 
 class Category(models.Model):

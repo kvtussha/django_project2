@@ -12,6 +12,7 @@ class User(AbstractUser):
 
     verification_code = models.CharField(max_length=8)
     is_active = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

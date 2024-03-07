@@ -13,13 +13,13 @@
         <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
         <a class="p-2 btn btn-outline-primary" href="/posts/">Отзывы покупателей</a>
     </nav> 
-    <nav class="ms-md-auto">
+    <nav class="ms-md-auto d-flex">
         <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
         {% if user.is_authenticated %}
             {% csrf_token %}
             <form method="post" action="{% url 'users:logout' %}">
                 {% csrf_token %}
-                <button type="submit" class="p-2 btn btn-primary me-2">Выйти</button>
+                <button type="submit" class="p-2 btn btn-outline-primary me-2">Выйти</button>
             </form>
             <a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Профиль</a>
         {% else %}
